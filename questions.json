@@ -1,0 +1,230 @@
+[
+  {
+    "id": 1,
+    "text": "Durante a execução de um projeto de implantação de sistema, duas equipes priorizam tarefas conflitantes e o cronograma começa a atrasar. Qual deve ser a primeira ação do gerente?",
+    "options": [
+      "Escalar para o patrocinador imediatamente",
+      "Revisar a EAP e facilitar reunião para realinhar prioridades",
+      "Redistribuir recursos para acelerar ambas as frentes",
+      "Solicitar uma mudança de escopo formal"
+    ],
+    "answer": 1,
+    "explanation": "Use a EAP/WBS como referência única e promova um alinhamento colaborativo antes de escalar ou mudar o escopo.",
+    "tags": [
+      "scope",
+      "stakeholders"
+    ]
+  },
+  {
+    "id": 2,
+    "text": "Orçamento: US$ 500.000, duração 10 meses. Após 4 meses: EV=180.000, AC=200.000. Qual é o CPI e o que indica?",
+    "options": [
+      "0,90 – sobrecusto",
+      "1,11 – economia",
+      "0,90 – adiantado",
+      "1,11 – atrasado"
+    ],
+    "answer": 0,
+    "explanation": "CPI = EV/AC = 180.000/200.000 = 0,9 (<1 indica sobrecusto para o trabalho realizado).",
+    "tags": [
+      "evm"
+    ]
+  },
+  {
+    "id": 3,
+    "text": "Planejamento: stakeholder influente pede requisito sem valor mensurável ao produto final. O gerente deve:",
+    "options": [
+      "Incluir para manter o stakeholder satisfeito",
+      "Avaliar com critérios de valor e discutir impacto/viabilidade",
+      "Escalar direto ao patrocinador",
+      "Rejeitar imediatamente"
+    ],
+    "answer": 1,
+    "explanation": "Decisão orientada a valor: avaliar e discutir impactos evita inchamento de escopo e mantém foco no valor.",
+    "tags": [
+      "stakeholders",
+      "scope"
+    ]
+  },
+  {
+    "id": 4,
+    "text": "Projeto ágil: PO quer adiantar funcionalidade para o Sprint atual, que já está em andamento. Qual resposta?",
+    "options": [
+      "Ajustar imediatamente o backlog do Sprint",
+      "Negociar para manter o escopo atual e priorizar no próximo Sprint",
+      "Substituir uma funcionalidade sem impactar prazo",
+      "Solicitar aprovação formal de mudança"
+    ],
+    "answer": 1,
+    "explanation": "Mudanças durante o Sprint são desencorajadas. Negociar a prioridade para o próximo ciclo é prática recomendada.",
+    "tags": [
+      "agile"
+    ]
+  },
+  {
+    "id": 5,
+    "text": "Análise de riscos: evento de baixa probabilidade e alto impacto. Qual abordagem preventiva é mais adequada?",
+    "options": [
+      "Transferir o risco",
+      "Aceitar o risco",
+      "Mitigar o risco",
+      "Evitar o risco"
+    ],
+    "answer": 3,
+    "explanation": "Se o impacto é alto, evitar a causa quando possível é a estratégia mais preventiva.",
+    "tags": [
+      "risk"
+    ]
+  },
+  {
+    "id": 6,
+    "text": "Projeto 60% concluído, orçamento US$ 300.000. EV=180.000, AC=150.000. Qual CPI e interpretação?",
+    "options": [
+      "1,2 – gastando menos que o planejado",
+      "0,83 – gastando mais que o planejado",
+      "1,2 – adiantado",
+      "0,83 – atrasado"
+    ],
+    "answer": 0,
+    "explanation": "CPI = 180k/150k = 1,2 (>1 indica eficiência de custo; gastando menos que o planejado para o trabalho feito).",
+    "tags": [
+      "evm"
+    ]
+  },
+  {
+    "id": 7,
+    "text": "Ambiente regulatório complexo; garantir requisitos legais no projeto. Qual princípio do PMBOK 7 mais se aplica?",
+    "options": [
+      "Demonstrar comportamento de liderança",
+      "Comprometer-se com a qualidade",
+      "Abordar a complexidade",
+      "Adaptar-se ao contexto"
+    ],
+    "answer": 1,
+    "explanation": "Compromisso com a qualidade inclui aderência a normas, padrões e requisitos regulatórios.",
+    "tags": [
+      "quality"
+    ]
+  },
+  {
+    "id": 8,
+    "text": "Novo membro questiona por que fazer retrospectivas ao fim de cada Sprint. Melhor explicação:",
+    "options": [
+      "Revisar escopo com o cliente",
+      "Ajustar processos e promover melhoria contínua",
+      "Exigência do plano de comunicação",
+      "Substituir as reuniões diárias"
+    ],
+    "answer": 1,
+    "explanation": "Retrospectivas fomentam inspeção e adaptação do processo para melhoria contínua.",
+    "tags": [
+      "agile"
+    ]
+  },
+  {
+    "id": 9,
+    "text": "Múltiplos fornecedores: atraso crítico ameaça caminho crítico. O gerente deve:",
+    "options": [
+      "Replanejar todo o cronograma",
+      "Negociar entrega parcial para reduzir impacto",
+      "Aplicar reserva de contingência",
+      "Solicitar mudança no contrato"
+    ],
+    "answer": 1,
+    "explanation": "Priorize ações imediatas de mitigação (entrega parcial) antes de replanejar tudo ou alterar contrato.",
+    "tags": [
+      "scope",
+      "risk"
+    ]
+  },
+  {
+    "id": 10,
+    "text": "Encerramento: o registro de lições aprendidas deve incluir:",
+    "options": [
+      "Apenas problemas negativos",
+      "Apenas práticas que funcionaram",
+      "Práticas bem-sucedidas e pontos de melhoria",
+      "Somente mudanças aprovadas"
+    ],
+    "answer": 2,
+    "explanation": "Capturar sucessos e melhorias aumenta a reutilização do que funcionou e evita recorrência de erros.",
+    "tags": [
+      "quality"
+    ]
+  },
+  {
+    "id": 11,
+    "text": "Stakeholder salience model prioriza stakeholders com base em:",
+    "options": [
+      "Poder, urgência e legitimidade",
+      "Interesse, impacto e comunicação",
+      "Poder, influência e recursos",
+      "Urgência, influência e experiência"
+    ],
+    "answer": 0,
+    "explanation": "O modelo de saliência usa os atributos: poder, legitimidade e urgência para priorização.",
+    "tags": [
+      "stakeholders"
+    ]
+  },
+  {
+    "id": 12,
+    "text": "SPI < 1 indica que o projeto está:",
+    "options": [
+      "Adiantado",
+      "No prazo",
+      "Atrasado",
+      "Dentro do orçamento"
+    ],
+    "answer": 2,
+    "explanation": "SPI = EV/PV. Se < 1, o valor entregue é menor que o planejado para a data → atraso.",
+    "tags": [
+      "evm"
+    ]
+  },
+  {
+    "id": 13,
+    "text": "Tailoring em projetos significa:",
+    "options": [
+      "Ajustar o orçamento ao escopo",
+      "Personalizar práticas ao contexto do projeto",
+      "Reduzir escopo para cumprir prazo",
+      "Escolher apenas práticas ágeis"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring é adaptar processos, artefatos e práticas ao contexto específico.",
+    "tags": [
+      "quality"
+    ]
+  },
+  {
+    "id": 14,
+    "text": "Em Scrum, o artefato usado para priorizar funcionalidades é:",
+    "options": [
+      "Matriz RACI",
+      "Backlog do Produto",
+      "EAP/WBS",
+      "Gráfico de Gantt"
+    ],
+    "answer": 1,
+    "explanation": "O Product Backlog lista e prioriza itens de produto, refinados continuamente.",
+    "tags": [
+      "agile"
+    ]
+  },
+  {
+    "id": 15,
+    "text": "Mudança regulatória externa impacta o projeto durante a execução. Isso é melhor classificado como:",
+    "options": [
+      "Risco identificado",
+      "Evento emergente (risco não identificado anteriormente)",
+      "Problema interno de equipe",
+      "Mudança solicitada pelo cliente"
+    ],
+    "answer": 1,
+    "explanation": "Mudança externa e inesperada é um risco emergente; requer avaliação e resposta.",
+    "tags": [
+      "risk"
+    ]
+  }
+]

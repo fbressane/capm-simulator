@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simulador CAPM – GitHub Pages</title>
+  <style>
+    :root { --primary:#2563eb; --success:#16a34a; --danger:#dc2626; --bg:#f5f7fb; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, Arial, sans-serif; background: var(--bg); color:#111; }
+    header { background: var(--primary); color:#fff; padding: 24px; }
+    header h1 { margin: 0 0 6px; font-size: 22px; }
+    header p { margin: 0; opacity: .95; }
+    main { max-width: 980px; margin: 20px auto; padding: 0 16px 40px; }
+    .card { background:#fff; border-radius: 14px; padding:18px; box-shadow: 0 8px 24px rgba(16,24,40,.06); margin-bottom:16px; }
+    .row { display:flex; flex-wrap: wrap; gap:12px; }
+    .row > * { flex: 1; min-width: 220px; }
+    label { display:block; font-weight:600; margin-bottom:6px; }
+    input[type="text"], select, input[type="number"] { width:100%; padding:10px 12px; border:1px solid #e5e7eb; border-radius:10px; }
+    button { background: var(--primary); color:#fff; padding: 12px 16px; border:none; border-radius:10px; cursor:pointer; font-weight:600; }
+    button:hover { filter: brightness(.95); }
+    .question { padding:16px; border:1px solid #eef; border-radius:12px; margin-bottom:12px; }
+    .question h3 { margin:0 0 10px; font-size:16px; }
+    .option { display:block; padding:8px 10px; border-radius:8px; border:1px solid #e5e7eb; margin:6px 0; cursor:pointer; }
+    .option:hover { background:#f8fafc; }
+    .result { margin-top:8px; padding:10px; border-radius:8px; }
+    .correct { background:#dcfce7; border:1px solid #bbf7d0; color:#065f46; }
+    .incorrect { background:#fee2e2; border:1px solid #fecaca; color:#7f1d1d; }
+    .muted { color:#6b7280; font-size: 13px; }
+    .score { font-size:18px; font-weight:700; text-align:center; padding:14px; border-radius:12px; background:#eef2ff; }
+    footer { text-align:center; color:#6b7280; font-size:13px; padding:24px; }
+    .pill { display:inline-block; padding:4px 8px; background:#eef2ff; color:#3730a3; border-radius:999px; font-size:12px; margin-right:6px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Simulador CAPM – GitHub Pages</h1>
+    <p>Gere e responda simulados estáticos (sem API). Filtre por categoria ou palavra-chave.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <div class="row">
+        <div>
+          <label for="category">Categoria</label>
+          <select id="category">
+            <option value="all">Todas</option>
+            <option value="agile">Agile</option>
+            <option value="evm">EVM (Custos/Prazo)</option>
+            <option value="stakeholders">Stakeholders</option>
+            <option value="quality">Qualidade/Regulatório</option>
+            <option value="scope">Escopo/Prioridades</option>
+            <option value="risk">Riscos</option>
+          </select>
+          <div class="muted">Dica: escolha "Agile" para treinar retrospectiva, PO, Sprints, etc.</div>
+        </div>
+        <div>
+          <label for="keywords">Filtro por palavra-chave (opcional)</label>
+          <input type="text" id="keywords" placeholder="Ex.: Agile, SPI, CPI, backlog, caminho crítico...">
+          <div class="muted">Usa correspondência simples no texto e nas tags.</div>
+        </div>
+        <div>
+          <label for="qty">Número de questões</label>
+          <input type="number" id="qty" min="5" max="30" value="10">
+        </div>
+      </div>
+      <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
+        <button id="btnStart">Gerar Simulado</button>
+        <button id="btnSubmit" disabled>Enviar Respostas</button>
+        <button id="btnReset" disabled>Limpar</button>
+      </div>
+      <p class="muted" style="margin-top:10px;">
+        Observação: Para gerar questões totalmente novas sob demanda usando um prompt livre, é preciso usar uma API protegida por um backend. 
+        Esta versão no GitHub Pages carrega um banco local (JSON) e permite filtro/aleatorização.
+      </p>
+    </section>
+
+    <section id="quizArea" class="card"></section>
+    <section id="scoreArea" class="card" style="display:none;"></section>
+
+    <section class="card">
+      <h3>Como habilitar geração dinâmica com prompt (quando quiser evoluir)</h3>
+      <p class="muted">
+        GitHub Pages é estático. Para gerar perguntas via AI com um campo de prompt, mantenha esta página no GitHub e crie um pequeno backend (por exemplo, 
+        Cloudflare Workers ou Netlify Functions) que guarda sua chave da OpenAI e retorna perguntas em JSON. A página então faria <code>fetch()</code> desse endpoint.
+      </p>
+      <div>
+        <span class="pill">Seguro</span>
+        <span class="pill">Barato</span>
+        <span class="pill">Fácil de manter</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    CAPM Simulator – estático (GitHub Pages). Feito para estudo pessoal.
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

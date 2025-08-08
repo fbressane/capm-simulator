@@ -1,23 +1,19 @@
-# Simulador CAPM – GitHub Pages (estático)
+# CAPM Simulator – Domínios (GitHub Pages)
 
-Este projeto é um **simulador estático** (sem backend) para rodar no GitHub Pages.
-- Carrega um banco local `questions.json`
-- Permite filtrar por **categoria** e **palavra-chave**
-- Mostra **explicações** ao corrigir
-- Sem dependências externas
+Esta versão classifica automaticamente cada questão em um dos 4 domínios do ECO:
+
+- **I**: Project Management Fundamentals and Core Concepts (36%)
+- **II**: Predictive, Plan‑Based Methodologies (17%)
+- **III**: Agile Frameworks/Methodologies (20%)
+- **IV**: Business Analysis Frameworks (27%)
 
 ## Como publicar no GitHub Pages
-1. Crie um repositório no GitHub (ex.: `capm-simulator`).
-2. Envie estes arquivos: `index.html`, `app.js`, `questions.json` e este `README.md`.
-3. No repositório, vá em **Settings → Pages**.
-4. Em **Build and deployment**, escolha **Deploy from a branch**.
-5. Selecione a branch `main` e o diretório `/ (root)`. Salve.
-6. Aguarde 1–2 minutos e acesse: `https://seuusuario.github.io/capm-simulator/`.
+1. Crie um repositório (ex.: `capm-simulator-domains`).
+2. Envie os arquivos: `index.html`, `app.js`, `questions.json`, `README.md`.
+3. Em **Settings → Pages**: *Deploy from a branch*, `main`, pasta `/`.
+4. Aguarde 1–2 minutos e acesse `https://SEU-USUARIO.github.io/capm-simulator-domains/`.
 
-## Evolução: geração dinâmica via API
-- GitHub Pages é estático. Para usar **prompt livre** e gerar questões novas a cada uso:
-  - Crie um pequeno backend (Cloudflare Workers, Netlify Functions, Vercel) que receba o prompt, chame a API da OpenAI e retorne JSON padronizado.
-  - Ajuste o `app.js` para fazer `fetch()` do seu endpoint em vez de `questions.json`.
-- Assim sua **API key** fica protegida (nunca exponha no front-end).
-
-Boa prática: manter no repositório uma pasta `/static` com bancos temáticos (Agile, EVM, etc.).
+## Observações
+- O arquivo `questions.json` foi gerado a partir do seu Excel, com **437 questões**.
+- A atribuição de domínio é feita por **palavras‑chave** (heurística). Você pode editar perguntas e domínios diretamente no `questions.json`.
+- Para geração dinâmica por prompt, adicione um backend (Workers/Functions) e troque o `fetch()`.

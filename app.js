@@ -12,15 +12,15 @@ async function loadQuestions(){
   ALL_QUESTIONS = await res.json();
 }
 
-function filterQuestions(category, keywords){
+function filterQuestions(domain, keywords){
   let items = ALL_QUESTIONS.slice();
-  if (category && category !== 'all'){
-    items = items.filter(q => (q.tags||[]).includes(category));
+  if (domain && domain !== 'all'){
+    items = items.filter(q => (q.tags||[]).includes(domain));
   }
   if (keywords && keywords.trim().length){
     const k = keywords.toLowerCase().split(',').map(s => s.trim()).filter(Boolean);
     items = items.filter(q => {
-      const hay = (q.text + ' ' + q.options.join(' ') + ' ' + (q.tags||[]).join(' ')).toLowerCase();
+      const hay = (q.text + ' ' + q.options.join(' ')).toLowerCase();
       return k.every(token => hay.includes(token));
     });
   }
@@ -32,7 +32,8 @@ function renderQuiz(questions){
   questions.forEach((q, idx) => {
     const div = document.createElement('div');
     div.className = 'question';
-    div.innerHTML = `<h3>${idx+1}. ${q.text}</h3>` + q.options.map((opt, i)=> 
+    const domainLabel = q.tags && q.tags[0] ? `<span class="pill">Domínio ${q.tags[0]}</span>` : '';
+    div.innerHTML = `<h3>${idx+1}. ${q.text}</h3>${domainLabel}` + q.options.map((opt, i)=> 
       `<label class="option"><input type="radio" name="q${idx}" value="${i}"/> ${opt}</label>`
     ).join('');
     quizArea.appendChild(div);
@@ -49,11 +50,11 @@ function grade(questions){
     if (selected && parseInt(selected.value,10) === q.answer){
       score++;
       result.className = 'result correct';
-      result.innerHTML = `✔ Correto<br>${q.explanation}`;
+      result.innerHTML = `✔ Correto` + (q.explanation ? `<br>${q.explanation}` : '');
     } else {
       result.className = 'result incorrect';
       const correct = q.options[q.answer];
-      result.innerHTML = `✘ ${selected ? 'Errado' : 'Não respondida'}<br><strong>Correta:</strong> ${correct}<br>${q.explanation}`;
+      result.innerHTML = `✘ ${selected ? 'Errado' : 'Não respondida'}<br><strong>Correta:</strong> ${correct}` + (q.explanation ? `<br>${q.explanation}` : '');
     }
     node.appendChild(result);
   });
@@ -64,12 +65,12 @@ function grade(questions){
 let CURRENT = [];
 
 btnStart.addEventListener('click', () => {
-  const category = document.getElementById('category').value;
-  const qty = Math.max(5, Math.min(30, parseInt(document.getElementById('qty').value,10) || 10));
+  const domain = document.getElementById('domain').value;
+  const qty = Math.max(5, Math.min(50, parseInt(document.getElementById('qty').value,10) || 10));
   const keywords = document.getElementById('keywords').value;
-  let pool = filterQuestions(category, keywords);
+  let pool = filterQuestions(domain, keywords);
   if (pool.length === 0){
-    quizArea.innerHTML = '<p class="muted">Nenhuma questão encontrada com esses filtros. Tente reduzir o filtro ou trocar a categoria.</p>';
+    quizArea.innerHTML = '<p class="muted">Nenhuma questão encontrada com esses filtros. Tente outro domínio ou remova as palavras‑chave.</p>';
     btnSubmit.disabled = true; btnReset.disabled = true;
     scoreArea.style.display = 'none'; scoreArea.innerHTML = '';
     return;

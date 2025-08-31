@@ -1,15 +1,25 @@
 let ALL_QUESTIONS = [];
 const quizArea = document.getElementById('quizArea');
 const scoreArea = document.getElementById('scoreArea');
+const statusBox = document.getElementById('status');
 const btnStart = document.getElementById('btnStart');
 const btnSubmit = document.getElementById('btnSubmit');
 const btnReset = document.getElementById('btnReset');
 
+function setStatus(msg){ statusBox.textContent = msg || ''; }
+
 function shuffle(arr){ for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
 
 async function loadQuestions(){
-  const res = await fetch('questions.json');
-  ALL_QUESTIONS = await res.json();
+  try{
+    const res = await fetch('questions.json', { cache: 'no-store' });
+    if(!res.ok) throw new Error(`HTTP ${res.status}`);
+    ALL_QUESTIONS = await res.json();
+    setStatus(`Banco carregado: ${ALL_QUESTIONS.length} questões.`);
+  }catch(e){
+    setStatus('Erro ao carregar questions.json.');
+    console.error(e);
+  }
 }
 
 function filterQuestions(domain, keywords){
@@ -65,21 +75,25 @@ function grade(questions){
 let CURRENT = [];
 
 btnStart.addEventListener('click', () => {
+  if(!ALL_QUESTIONS.length){ setStatus('Banco não carregado.'); return; }
   const domain = document.getElementById('domain').value;
-  const qty = Math.max(2, Math.min(50, parseInt(document.getElementById('qty').value,10) || 10)); // mínimo agora 2
+  const qty = Math.max(2, Math.min(50, parseInt(document.getElementById('qty').value,10) || 10)); // mínimo 2
   const keywords = document.getElementById('keywords').value;
   let pool = filterQuestions(domain, keywords);
   if (pool.length === 0){
-    quizArea.innerHTML = '<p class="muted">Nenhuma questão encontrada com esses filtros. Tente outro domínio ou remova as palavras‑chave.</p>';
+    quizArea.innerHTML = '<p class="muted">Nenhuma questão encontrada com esses filtros.</p>';
     btnSubmit.disabled = true; btnReset.disabled = true;
     scoreArea.style.display = 'none'; scoreArea.innerHTML = '';
+    setStatus('0 questões encontradas para os filtros aplicados.');
     return;
   }
   pool = shuffle(pool);
-  CURRENT = pool.slice(0, qty);
+  const take = Math.min(qty, pool.length);
+  CURRENT = pool.slice(0, take);
   renderQuiz(CURRENT);
   btnSubmit.disabled = false; btnReset.disabled = false;
   scoreArea.style.display = 'none'; scoreArea.innerHTML = '';
+  setStatus(`Encontradas ${pool.length} questões. Exibindo ${take}.`);
 });
 
 btnSubmit.addEventListener('click', () => {
@@ -91,6 +105,7 @@ btnReset.addEventListener('click', () => {
   CURRENT = [];
   btnSubmit.disabled = true; btnReset.disabled = true;
   scoreArea.style.display = 'none'; scoreArea.innerHTML = '';
+  setStatus('');
 });
 
 loadQuestions();

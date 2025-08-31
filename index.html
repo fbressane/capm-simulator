@@ -29,6 +29,7 @@
     .score{ font-size:18px; font-weight:700; text-align:center; padding:14px; border-radius:12px; background:#eef2ff; }
     .muted{ color:#64748b; font-size:13px; }
     .pill{ display:inline-block; padding:4px 8px; background:#eef2ff; color:#3730a3; border-radius:999px; font-size:12px; margin-right:6px; }
+    #status{ font-size:13px; color:#475569; margin-top:8px;}
   </style>
 </head>
 <body>
@@ -44,14 +45,14 @@
           <select id="domain">
             <option value="all">Todos (aleatório)</option>
             <option value="I">I. Fundamentals & Core Concepts (36%)</option>
-            <option value="II">II. Predictive, Plan‑Based (17%)</option>
+            <option value="II">II. Predictive, Plan-Based (17%)</option>
             <option value="III">III. Agile Frameworks (20%)</option>
             <option value="IV">IV. Business Analysis (27%)</option>
           </select>
           <div class="muted">Dica: escolha um domínio para treinar de forma direcionada.</div>
         </div>
         <div>
-          <label for="keywords">Palavra‑chave (opcional)</label>
+          <label for="keywords">Palavra-chave (opcional)</label>
           <input type="text" id="keywords" placeholder="Ex.: sprint, CPI, stakeholder, requirements">
         </div>
         <div>
@@ -64,25 +65,11 @@
         <button id="btnSubmit" disabled>Enviar Respostas</button>
         <button id="btnReset" disabled>Limpar</button>
       </div>
-      <p class="muted" style="margin-top:10px;">
-        Observação: esta é uma versão estática sem API. Para geração dinâmica via prompt, adicione um backend (Cloudflare/Netlify/Vercel).
-      </p>
+      <div id="status"></div>
     </section>
 
     <section id="quizArea" class="card"></section>
     <section id="scoreArea" class="card" style="display:none;"></section>
-
-    <section class="card">
-      <h3>Como evoluir</h3>
-      <div class="muted">
-        1) Manter este site no GitHub Pages. 2) Criar um endpoint serverless que chama a OpenAI e devolve JSON. 3) Trocar o carregamento de <code>questions.json</code> por <code>fetch()</code> do seu endpoint.
-      </div>
-      <div style="margin-top:8px;">
-        <span class="pill">Sem expor API key</span>
-        <span class="pill">Config simples</span>
-        <span class="pill">Prompt livre</span>
-      </div>
-    </section>
   </main>
   <script src="app.js"></script>
 </body>
